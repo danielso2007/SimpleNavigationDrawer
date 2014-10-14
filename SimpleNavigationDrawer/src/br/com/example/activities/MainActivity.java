@@ -119,6 +119,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 	@Override
 	public void onBackPressed() {
 		if (!back) {
+			((DrawerLayout) findViewById(R.id.drawer_layout)).closeDrawers();
 			back = true;
 			Utils.ShowToast(getApplicationContext(), getResources().getString(R.string.message_back_pressed));
 		} else {
