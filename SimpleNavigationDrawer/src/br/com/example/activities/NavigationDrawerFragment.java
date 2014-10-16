@@ -60,6 +60,7 @@ public class NavigationDrawerFragment extends Fragment {
 	private int mCurrentSelectedPosition = 0;
 	private boolean mFromSavedInstanceState;
 	private boolean mUserLearnedDrawer;
+	private boolean mNavigationItemClicked;
 	private MyDrawerAdapter mMyDrawerAdapter;
 
 	private String[] titles;
@@ -98,31 +99,35 @@ public class NavigationDrawerFragment extends Fragment {
 
 	@Override
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
+
 		mDrawerListView = (ListView) inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
 		mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(final AdapterView<?> parent, final View view, final int position, final long id) {
 				if (position == 0) {
-					images[0] = R.drawable.ic_drawer;
-					images[1] = R.drawable.ic_drawer;
-					images[2] = R.drawable.ic_drawer;
+					images[0] = R.drawable.ic_pin;
+					images[1] = R.drawable.ic_principal;
+					images[2] = R.drawable.ic_system_preferences;
 				} else if (position == 1) {
-					images[0] = R.drawable.ic_drawer;
-					images[1] = R.drawable.ic_drawer;
-					images[2] = R.drawable.ic_drawer;
+					images[0] = R.drawable.ic_pin;
+					images[1] = R.drawable.ic_principal;
+					images[2] = R.drawable.ic_system_preferences;
 				} else if (position == 2) {
-					images[0] = R.drawable.ic_drawer;
-					images[1] = R.drawable.ic_drawer;
-					images[2] = R.drawable.ic_drawer;
+					images[0] = R.drawable.ic_pin;
+					images[1] = R.drawable.ic_principal;
+					images[2] = R.drawable.ic_system_preferences;
 				}
 				selectedposition[0] = position;
 				mMyDrawerAdapter.notifyDataSetChanged();
-				selectItem(position);
+				if (mDrawerLayout != null) {
+					mDrawerLayout.closeDrawer(mFragmentContainerView);
+				}
+				mNavigationItemClicked = true;
 			}
 		});
 
 		titles = new String[]{ getString(R.string.title_section1), getString(R.string.title_section2), getString(R.string.title_section3) };
-		images = new int[]{ R.drawable.ic_drawer, R.drawable.ic_drawer, R.drawable.ic_drawer };
+		images = new int[]{ R.drawable.ic_pin, R.drawable.ic_principal, R.drawable.ic_system_preferences };
 		selectedposition = new int[]{ mCurrentSelectedPosition };
 
 		mMyDrawerAdapter = new MyDrawerAdapter(getActivity(), titles, images, selectedposition);
@@ -177,8 +182,11 @@ public class NavigationDrawerFragment extends Fragment {
 					return;
 				}
 
-				getActivity().invalidateOptionsMenu(); // calls
-				// onPrepareOptionsMenu()
+				getActivity().invalidateOptionsMenu(); // calls onPrepareOptionsMenu()
+				if (mNavigationItemClicked) {
+					selectItem(selectedposition[0]);
+				}
+			    mNavigationItemClicked = false;
 			}
 
 			@Override
@@ -269,7 +277,8 @@ public class NavigationDrawerFragment extends Fragment {
 		// showGlobalContextActionBar, which controls the top-left area of the
 		// action bar.
 		if (mDrawerLayout != null && isDrawerOpen()) {
-			inflater.inflate(R.menu.global, menu);
+			// inflater.inflate(R.menu.global, menu);
+			inflater.inflate(R.menu.main, menu);
 			showGlobalContextActionBar();
 		}
 		super.onCreateOptionsMenu(menu, inflater);

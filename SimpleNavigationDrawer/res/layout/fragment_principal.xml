@@ -3,16 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0200E4"
     android:gravity="center"
-    tools:context="br.com.example.activities.MainActivity$HomeFragment" >
+    tools:context="br.com.example.activities.MainActivity$PrincipalFragment" >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ListView
+        android:id="@+id/listPesquisas"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="You are in home fragment!"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        android:textStyle="bold|italic" />
+        android:divider="@color/list_divider"
+        android:dividerHeight="1dp"
+        android:listSelector="@drawable/list_row_selector" />
 
 </LinearLayout>

@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
@@ -12,8 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import br.com.example.R;
-import br.com.example.fragments.HomeFragment;
 import br.com.example.fragments.MailFragment;
+import br.com.example.fragments.PrincipalFragment;
 import br.com.example.fragments.SettingsFragment;
 import br.com.example.utils.Utils;
 
@@ -22,6 +23,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 	private NavigationDrawerFragment mNavigationDrawerFragment;
 
 	private CharSequence mTitle;
+	private boolean back = false;
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
@@ -29,7 +31,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 		setContentView(R.layout.activity_main);
 
 		mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
-		mTitle = getTitle();
+		mTitle = getString(R.string.app_name);
 
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
 	}
@@ -37,28 +39,31 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 	@Override
 	public void onNavigationDrawerItemSelected(final int position) {
 		FragmentManager fragmentManager = getFragmentManager();
+		FragmentTransaction tx = fragmentManager.beginTransaction();
 		if (position == 0) {
-			fragmentManager.beginTransaction().replace(R.id.container, HomeFragment.newInstance()).commit();
+			tx.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+			tx.replace(R.id.container, PrincipalFragment.newInstance()).commit();
 		} else if (position == 1) {
-			fragmentManager.beginTransaction().replace(R.id.container, MailFragment.newInstance()).commit();
+			tx.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+			tx.replace(R.id.container, MailFragment.newInstance()).commit();
 		} else if (position == 2) {
-			fragmentManager.beginTransaction().replace(R.id.container, SettingsFragment.newInstance()).commit();
+			tx.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+			tx.replace(R.id.container, SettingsFragment.newInstance()).commit();
 		}
 	}
 
 	public void onSectionAttached(final int number) {
-		System.out.println(mTitle);  
-		  switch (number) {  
-		  case 1:  
-		   mTitle = getString(R.string.title_section1);  
-		   break;  
-		  case 2:  
-		   mTitle = getString(R.string.title_section2);  
-		   break;  
-		  case 3:  
-		   mTitle = getString(R.string.title_section3);  
-		   break;  
-		  }  
+		switch (number) {
+			case 0:
+				mTitle = getString(R.string.app_name);
+				break;
+			case 1:
+				mTitle = getString(R.string.app_name);
+				break;
+			case 2:
+				mTitle = getString(R.string.app_name);
+				break;
+		}
 	}
 
 	public void restoreActionBar() {
@@ -113,13 +118,13 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 			((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
 		}
 	}
-	
-	private boolean back = false;
-	
+
 	@Override
 	public void onBackPressed() {
-		if (!back) {
+		if (mNavigationDrawerFragment.isDrawerOpen()) {
 			((DrawerLayout) findViewById(R.id.drawer_layout)).closeDrawers();
+			back = false;
+		} else if (!back) {
 			back = true;
 			Utils.ShowToast(getApplicationContext(), getResources().getString(R.string.message_back_pressed));
 		} else {
