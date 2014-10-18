@@ -10,7 +10,8 @@
         android:layout_height="fill_parent"
         android:layout_margin="10dp"
         android:layout_weight=".5"
-        android:src="@drawable/ic_drawer" />
+        android:src="@drawable/ic_principal"
+        android:contentDescription="@string/imagem_item_drawer"/>
 
     <TextView
         android:id="@+id/textView1"
@@ -20,6 +21,6 @@
         android:layout_marginLeft="5dp"
         android:layout_weight="1.5"
         android:gravity="left|center_vertical"
-        android:text="TextView" />
+        android:text="@string/select_item_drawer_default" />
 
 </LinearLayout>

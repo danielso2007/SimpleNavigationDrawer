@@ -39,7 +39,7 @@ public class PrincipalFragment extends Fragment {
 		pDialog = new ProgressDialog(getActivity());
 		pDialog.setMessage(getString(R.string.string_loading));
 		pDialog.show();
-		
+
 		criarDados();
 		
 		listView = (ListView) rootView.findViewById(R.id.listPesquisas);

@@ -17,20 +17,21 @@ public final class R {
         public static final int black=0x7f040008;
         public static final int cinza_claro=0x7f040003;
         public static final int cinza_escuro=0x7f040004;
+        public static final int cinza_escuro_actionBar=0x7f04000a;
         /**  List tela Principal 
          */
-        public static final int genre=0x7f04000b;
+        public static final int genre=0x7f04000c;
         public static final int gray=0x7f040007;
-        public static final int list_divider=0x7f04000d;
-        public static final int list_row_end_color=0x7f04000f;
-        public static final int list_row_hover_end_color=0x7f040011;
-        public static final int list_row_hover_start_color=0x7f040010;
-        public static final int list_row_start_color=0x7f04000e;
+        public static final int list_divider=0x7f04000e;
+        public static final int list_row_end_color=0x7f040010;
+        public static final int list_row_hover_end_color=0x7f040012;
+        public static final int list_row_hover_start_color=0x7f040011;
+        public static final int list_row_start_color=0x7f04000f;
         public static final int roxo_pinngo=0x7f040001;
         public static final int texto_branco=0x7f040002;
-        public static final int transparent=0x7f04000a;
+        public static final int transparent=0x7f04000b;
         public static final int white=0x7f040006;
-        public static final int year=0x7f04000c;
+        public static final int year=0x7f04000d;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -79,20 +80,23 @@ public final class R {
     }
     public static final class id {
         public static final int ProgressBar=0x7f090003;
-        public static final int action_example=0x7f09000e;
-        public static final int action_settings=0x7f09000d;
+        public static final int action_example=0x7f090011;
+        public static final int action_settings=0x7f090010;
         public static final int container=0x7f090001;
         public static final int drawer_layout=0x7f090000;
-        public static final int genre=0x7f09000b;
+        public static final int footerView=0x7f090008;
+        public static final int genre=0x7f09000e;
+        public static final int headerView=0x7f090007;
         public static final int imageView1=0x7f090004;
-        public static final int listPesquisas=0x7f090007;
+        public static final int listPesquisas=0x7f09000a;
+        public static final int navigationItems=0x7f090009;
         public static final int navigation_drawer=0x7f090002;
-        public static final int rating=0x7f09000a;
-        public static final int releaseYear=0x7f09000c;
+        public static final int rating=0x7f09000d;
+        public static final int releaseYear=0x7f09000f;
         public static final int section_label=0x7f090006;
         public static final int textView1=0x7f090005;
-        public static final int thumbnail=0x7f090008;
-        public static final int title=0x7f090009;
+        public static final int thumbnail=0x7f09000b;
+        public static final int title=0x7f09000c;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -114,9 +118,11 @@ public final class R {
         public static final int action_settings=0x7f06000a;
         public static final int app_name=0x7f060000;
         public static final int hello_world=0x7f060002;
+        public static final int imagem_item_drawer=0x7f060010;
         public static final int message_back_pressed=0x7f06000b;
         public static final int navigation_drawer_close=0x7f060008;
         public static final int navigation_drawer_open=0x7f060007;
+        public static final int select_item_drawer_default=0x7f06000f;
         public static final int string_loading=0x7f06000d;
         public static final int string_pesquisa_imagem=0x7f06000c;
         public static final int title_activity_main=0x7f060003;
@@ -124,6 +130,7 @@ public final class R {
         public static final int title_section1=0x7f060004;
         public static final int title_section2=0x7f060005;
         public static final int title_section3=0x7f060006;
+        public static final int version=0x7f06000e;
     }
     public static final class style {
         /** 

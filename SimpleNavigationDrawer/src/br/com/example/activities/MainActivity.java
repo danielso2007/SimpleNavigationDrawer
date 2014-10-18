@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import br.com.example.R;
 import br.com.example.fragments.MailFragment;
+import br.com.example.fragments.NavigationDrawerFragment;
 import br.com.example.fragments.PrincipalFragment;
 import br.com.example.fragments.SettingsFragment;
 import br.com.example.utils.Utils;
